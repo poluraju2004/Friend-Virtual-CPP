@@ -1,3 +1,4 @@
+// virtual keyword destructor
 #include <iostream>
 using namespace std;
 
@@ -6,12 +7,10 @@ public:
 	Base() {
 		cout << "Constructing base \n";
 	}
-	~Base() {
+	virtual ~Base() {
 		cout << "Destructing base  \n";
-
 	}
 };
-
 class Derived :public Base {
 public:
 	Derived() {
@@ -19,12 +18,12 @@ public:
 	}
 	~Derived() {
 		cout << "Destructing Derived  \n";
-
 	}
 };
 int main() {
-	Derived d; 
-
-
+	Derived* d = new Derived();
+	Base* b = d;
+	delete b;
+	//getchar();
 	return 0; 
 }
